@@ -1,0 +1,60 @@
+targets, factors
+
+ABCA7, SPI1 | (Ab & (APOE | CLU))
+ABI3, SPI1 & (!AKT | TGFb)
+AKT, (PI3K | GSK3b | SYK | TGFb) & !ABI3
+BHLHE41, ETS2 | SPI1
+BIN1, SPI1 & ERK
+Ca_ion, !XBP1 | (PLCG & MS4A)
+CASS4, Ca_ion | SRC
+CD14, ABCA7 & Ab & !((APOE | CLU) & (CD33 | TREM2))
+CD2AP, AKT
+CD33, SPI1 | (Ab & (APOE | CLU) & ERK)
+CHD2, BHLHE41 | (SF1)
+CXCL3, CXCL3
+ERK, !IRF1 | ((CXCL3 | TGFb | PLCG | SYK) | !(LAT2 | PSMB8 | PTPN6))
+ETS2, IRF1 | SPI1
+ETV5, SPI1 & ERK
+GF, GF
+GSK3b, ROS | !AKT
+HLA_DR, SPI1 | (phagocytosis & Ab)
+IKZF1, ETS2 | IRF1
+INPP5D, SPI1 & (TYROBP | CD33)
+IRF3, (IL4 & CD14) | !(IRF1 | INPP5D)
+IRF1, ((SPI1 & (BHLHE41 & IKZF1 & XBP1)) | (IL1 & PLCG & BIN1)) & !(PI3K | IRF3)
+LAT2, SYK | SRC 
+MEF2A, (SPI1 & BHLHE41) | TGFb
+MEF2C, ((ETV5 & ETS2) & (!SF1 | IKZF1 | (SPI1 & STAT3 & CHD2))) | (TGFb | Ca_ion)
+MS4A, SPI1 | TREM2
+mTOR, AKT & GSK3b
+NFkB, (XBP1 & SPI1) & ((GSK3b | ROS | (CD14 & PLCG) | AKT | ERK | TNFa | IL1) )
+PICALM, (SPI1 | BHLHE41) & IRF1
+PI3K, ((LAT2 | SYK) | (TGFb | CD14 | IL1| CXCL3)) & !(INPP5D | PTPN6)
+PILRA, SPI1 | BHLHE41
+PLCG, LAT2 & CXCL3
+PSMB8, IRF1
+PTK2B, (SRC | PI3K) & Ca_ion
+PTPN6, (SPI1 & BHLHE41 & IRF1) | (CD33 | PILRA)
+RIN3, GF | SPI1
+ROS, SPI1 | (PI3K & ERK)
+SF1, (ETV5 & IRF1 & (CHD2 | SPI1 | !XBP1) ) | (CHD2 & !XBP1) & (SPI1 | IRF1 & YY1)
+SORL1, (BHLHE41 | SPI1) | ((APOE | CLU) & Ab)
+SPI1, NFkB | ( BIN1 & TGFb )
+SRC, PTPN6 & CASS4
+STAT3, ( IRF1 | (XBP1 & YY1) ) | (GSK3b | ((CD14 | IL1) & !PTPN6) )
+SYK, (TYROBP | (INPP5D | CD2AP) | HLA_DR ) & !PTPN6
+TREM2, SPI1 | ( !(MS4A | SORL1) & ERK & Ab & (APOE | CLU) )
+TYROBP, SPI1 | (SRC & TREM2 & ERK & !INPP5D)
+XBP1, NFkB | ROS
+YY1, BHLHE41 & SPI1
+phagocytosis, ABI3 & (CD14 | ABCA7) & ( (CASS4 & PTK2B) | (mTOR & SRC & SYK) | (PICALM & SORL1) | (BIN1 & RIN3 & CD2AP) )
+phagosome, phagocytosis
+autophagy, (CD14 | MEF2A) & !(mTOR | NFkB | ROS)
+TNFa, !MEF2C & (IRF1 | (STAT3 | XBP1))
+IL1,  NFkB & (IRF1 | XBP1 | STAT3) & !(ETV5 | MEF2C)
+IL4, (IRF3 | ETV5 | MEF2C | STAT3) & !NFkB
+Ab, Ab & !(autophagy & (phagosome | phagocytosis))
+APOE, Ab | !Ab
+CLU, Ab | !Ab
+TGFb, IRF3 & (ETV5 | MEF2C | STAT3)
+Ab_tangle, Ab & !autophagy & (phagosome | phagocytosis)
